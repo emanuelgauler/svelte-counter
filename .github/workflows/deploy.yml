@@ -15,33 +15,34 @@ jobs:
         uses: oven-sh/setup-bun@v2
     
       - name: Install dependencies
-			  run: bun install
+        run: bun install
 
-			- name: Build the app
-        BASE_PATH: '/${{ github.event.repository_name }}/'
-				run: bun run build
+      - name: Build the app
+        env:
+          BASE_PATH: /${{ github.repository.name }}
+        run: bun run build
 
       - name: Upload artifacts 
         uses: actions/upload-pages-artifact@v3
         with:
           path: build/
 
-deploy:
-  needs: build_site
-  runs-on: ubuntu-latest
+  deploy:
+    needs: build_site
+    runs-on: ubuntu-latest
 
-  permissions:
-    pages: write
-    id-token: write
+    permissions:
+      pages: write
+      id-token: write
 
-  environment: 
-    name: gitHub-pages
-    url: ${{ steps.deployment.outputs.page_url }}
+    environment: 
+      name: gitHub-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-  steps:
-    - name: Deploy
-      id: deployment
-      uses: actions/deploy-pages@v4
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
 
-    
-    
+      
+      
