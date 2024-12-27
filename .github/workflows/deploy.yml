@@ -19,7 +19,7 @@ jobs:
 
       - name: Build the app
         env:
-          BASE_PATH: /${{ github.repository.name }}
+          BASE_PATH: /${{ github.event.repository.name }}
         run: bun run build
 
       - name: Upload artifacts 
