@@ -9,3 +9,21 @@
 <button onclick={() => count++}>Increase</button>
 <button onclick={() => count=0}>Reset</button>
 <button onclick={() => count--}>Decrease</button>
+
+
+<style>
+    h3 {
+        --size: 10rem;
+        margin: 0 auto;
+        font-size: 3rem;
+        color: white;
+
+        border-radius: 50%;
+        padding: 1rem;
+        background-color: darkorchid;
+        width: var(--size);
+        height: var(--size);
+        display: grid;
+        place-content: center;
+    }
+</style>
